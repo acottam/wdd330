@@ -1,0 +1,96 @@
+/* ---- Base breakpoint ---- */
+@media (min-width: 48rem) {
+    .menu-toggle {
+        display: none;
+    }
+    .header-spacer {
+        display: block;
+    }
+    .header-wrapper {
+        grid-template-columns: 150px 1fr 150px;
+        gap: 0rem;
+    }
+    .logo {
+        width: 150px;
+    }
+    .header-spacer {
+        grid-column: 3;
+        width: 150px;
+    }
+    .site-name .line-1 {
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        letter-spacing: .3rem;
+    }
+    .site-name .line-2 {
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+    .nav {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: .5rem 2rem;
+        margin-top: .5rem;
+        justify-content: center;
+        width: auto;
+    }
+    .nav a {
+        width: auto;
+    }
+    .filters {
+        justify-content: center;
+    }
+    main {
+        margin-top: 1.5rem;
+    }
+    section {
+        padding: 1.25rem 1.25rem 1.1rem;
+        margin-bottom: 1.25rem;
+    }
+    section > h2 {
+        font-size: 1.5rem;
+        padding: .7rem 0;
+    }
+    .hero-content h2 {
+        font-size: 1.75rem;
+    }
+    .park-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tips-grid {
+        grid-template-columns: 1fr 400px;
+    }
+    .itinerary-preview-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .days-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* ---- Wider ---- */
+@media (min-width: 70rem) {
+    main, .header-wrapper {
+        width: min(1100px, 90%);
+    }
+    .header-wrapper {
+        gap: 0rem;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    section > h2 {
+        font-size: 1.75rem;
+    }
+    .park-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .featured-parks .park-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

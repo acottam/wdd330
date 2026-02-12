@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#0B3D2E">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results - PNW Family Adventure Finder</title>
+  <meta name="description" content="Browse Pacific Northwest parks with filtering and sorting options.">
+  <meta name="author" content="Adam Cottam">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Search Results - PNW Family Adventure Finder">
+  <meta property="og:description" content="Browse Pacific Northwest parks with filtering and sorting options.">
+  <meta property="og:url" content="https://acottam.github.io/wdd330/results.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://acottam.github.io/wdd330/images/pnw-family-adventure-finder-logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PNW Family Adventure Finder">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/normalize.min.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/large.css">
+  
+  <!-- JS -->
+  <script type="module" src="scripts/app.js"></script>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+  
+  <!-- Header -->
+  <header>
+    <div class="header-wrapper">
+
+      <!-- Logo -->
+      <img src="images/pnw-family-adventure-finder-logo.png" alt="PNW Family Adventure Finder Logo" class="logo">
+
+      <!-- Site Name -->
+      <div class="header-content">
+        <p class="site-name">
+          <span class="line-1">PNW Family</span>
+          <span class="line-2">Adventure Finder</span>
+        </p>
+      </div>
+      
+      <!-- Menu Button -->
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+      
+      <!-- Header Spacer -->
+      <div class="header-spacer"></div>
+      
+      <!-- Primary Nav -->
+      <nav id="primary-nav" class="nav closed" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="results.html" class="active">Search Results</a>
+        <a href="favorites.html">Favorites</a>
+        <a href="plans.html">Day Plans</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <h1 class="page-title">Park Search Results</h1>
+    
+    <!-- Hero Section -->
+    <section class="hero parks-page-hero">
+      <div class="hero-content">
+        <h2>Explore Pacific Northwest Parks</h2>
+        <p>Find the perfect destination for your family adventure</p>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+      
+      <!-- Sort By -->
+      <label for="sort-filter">Sort by:</label>
+      <select id="sort-filter">
+        <option value="name">Name</option>
+        <option value="distance">Distance</option>
+      </select>
+    </section>
+
+    <!-- Park Results -->
+    <section class="parks">
+      <div class="park-grid" id="park-grid">
+        <!-- Park results will be loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><span id="currentyear"></span> <span>🏕️🏔️🌲</span> Adam Cottam <span>🌲🏔️🏕️</span> Portland, Oregon USA</p>
+    <p id="lastmodified"></p>
+  </footer>
+</body>
+
+</html>

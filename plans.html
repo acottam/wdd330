@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#0B3D2E">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day Plans - PNW Family Adventure Finder</title>
+  <meta name="description" content="Create, view, and manage your saved day plans for Pacific Northwest adventures.">
+  <meta name="author" content="Adam Cottam">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Day Plans - PNW Family Adventure Finder">
+  <meta property="og:description" content="Create and manage your saved day plans.">
+  <meta property="og:url" content="https://acottam.github.io/wdd330/plans.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://acottam.github.io/wdd330/images/pnw-family-adventure-finder-logo.png">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/normalize.min.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/large.css">
+
+  <!-- JS -->
+  <script type="module" src="scripts/app.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+  
+  <!-- Header -->
+  <header>
+    <div class="header-wrapper">
+      <img src="images/pnw-family-adventure-finder-logo.png" alt="PNW Family Adventure Finder Logo" class="logo">
+      <div class="header-content">
+        <p class="site-name">
+          <span class="line-1">PNW Family</span>
+          <span class="line-2">Adventure Finder</span>
+        </p>
+      </div>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+      <div class="header-spacer"></div>
+      <nav id="primary-nav" class="nav closed" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="results.html">Search Results</a>
+        <a href="favorites.html">Favorites</a>
+        <a href="plans.html" class="active">Day Plans</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <h1 class="page-title">My Day Plans</h1>
+    
+    <section id="create-plan" class="tips-form">
+      <h3>Create New Day Plan</h3>
+      <p>Build your perfect Pacific Northwest day trip</p>
+      <form id="plan-form">
+        <label for="plan-name">Plan Name *</label>
+        <input type="text" id="plan-name" name="plan-name" placeholder="e.g., Mount Rainier Family Day" required>
+        
+        <label for="plan-date">Date *</label>
+        <input type="date" id="plan-date" name="plan-date" required>
+        
+        <label for="plan-park">Park *</label>
+        <select id="plan-park" name="plan-park" required>
+          <option value="">Select a park...</option>
+        </select>
+        
+        <label for="plan-notes">Notes</label>
+        <textarea id="plan-notes" name="plan-notes" rows="4" placeholder="Add any special notes or reminders..."></textarea>
+        
+        <button type="submit" class="submit-btn">Save Plan</button>
+      </form>
+    </section>
+
+    <section id="saved-plans">
+      <h2>Saved Plans</h2>
+      <div id="plans-list">
+        <!-- Saved plans will be loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><span id="currentyear"></span> <span>🏕️🏔️🌲</span> Adam Cottam <span>🌲🏔️🏕️</span> Portland, Oregon USA</p>
+    <p id="lastmodified"></p>
+  </footer>
+</body>
+
+</html>

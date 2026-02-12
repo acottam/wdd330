@@ -1,0 +1,969 @@
+/* ---- Site Plan Colors ---- */
+:root {
+    --evergreen-ridge: #0B3D2E;    /* Primary (Evergreen) - header/nav/footer */
+    --river-blue: #1D6FA3;         /* Secondary (River Blue) */
+    --canyon-sunrise: #F4A261;     /* Accent (Sunrise) - buttons/links */
+    --warm-sandstone: #F3F6F8;     /* Background (Mist) */
+    --alpine-sky: #BBD7EA;         /* highlight panels/cards */
+    --ink-900: #1F2933;            /* Text (Charcoal) */
+    --ink-700: #374151;            /* secondary text */
+    --ink-000: #ffffff;            /* white */
+    --radius: 6px;
+    --gap: 1rem;
+    --shadow-1: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    --shadow-2: 0 10px 15px -3px rgba(0,0,0,.10), 0 4px 6px -4px rgba(0,0,0,.10);
+}
+
+/* ---- Scrollbar Styling ---- */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: #202124;
+}
+::-webkit-scrollbar-thumb {
+    background: #5f6368;
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #80868b;
+}
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #5f6368 #202124;
+}
+
+/* ----- Global Resets ---- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+html {
+    -webkit-text-size-adjust: 100%;
+    height: 100%;
+    scrollbar-gutter: stable;
+    background: #202124;
+}
+body {
+    margin: 0;
+    font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 400;
+    color: var(--ink-900);
+    background: var(--warm-sandstone);
+    line-height: 1.6;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 600;
+    margin: 0 0 .5rem 0;
+}
+h1, h2 {
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+p {
+    margin: 0 0 1rem 0;
+    max-width: 65ch;
+}
+.italics {
+    font-style: italic;
+}
+ul,ol {
+    padding-left: 1.25rem;
+    margin: 0 0 1rem 0;
+}
+code, pre, kbd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+a, a:visited {
+    color: var(--canyon-sunrise);
+    text-decoration: none;
+    font-weight: 700;
+}
+a:hover, a:focus {
+    text-decoration: underline;
+}
+
+/* ---- Header & Navigation ---- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--evergreen-ridge);
+    color: var(--ink-000);
+    padding: .75rem 0;
+    box-shadow: var(--shadow-1);
+}
+.header-wrapper {
+    width: min(1050px, 92%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 130px 1fr 40px;
+    grid-template-rows: auto auto;
+    gap: 0rem;
+}
+.logo {
+    height: 130px;
+    width: 130px;
+    object-fit: contain;
+    grid-row: 1 / -1;
+    align-self: start;
+}
+.header-content {
+    text-align: center;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+}
+.site-name {
+    font-family: "Raleway", serif;
+    font-weight: 700;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    min-height: 130px;
+}
+.site-name .line-1 {
+    font-size: clamp(.78732rem, 1.889568vw, 1.259712rem);
+    letter-spacing: .2rem;
+    margin-top: .5rem;
+}
+.site-name .line-2 {
+    font-size: clamp(.5668704rem, 1.2282192vw, .8030664rem);
+    font-weight: 400;
+    margin: .5rem 0 0 0;
+}
+.site-name .line-3 {
+    font-size: clamp(1.44rem, 3.6vw, 2.592rem);
+    font-weight: 800;
+    letter-spacing: .2rem;
+}
+.header-content h1 {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: .02em;
+    margin: 0;
+}
+.tagline {
+    font-size: .9rem;
+    margin: .25rem 0 0 0;
+    opacity: .9;
+}
+header h1, p.h1{
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: .02em;
+    margin: 0;
+    text-align: center;
+}
+
+/* ---- Navigation ---- */
+.menu-toggle {
+    width: 40px;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .35);
+    border-radius: 8px;
+    cursor: pointer;
+    grid-column: 3;
+    grid-row: 1;
+    position: relative;
+}
+.menu-toggle .bar {
+    width: 22px;
+    height: 2px;
+    background: var(--ink-000);
+    display: block;
+    transition: all 0.3s ease;
+    position: absolute;
+}
+.menu-toggle .bar:nth-child(1) {
+    transform: translateY(-6px);
+}
+.menu-toggle .bar:nth-child(3) {
+    transform: translateY(6px);
+}
+.menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg);
+}
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+}
+.menu-toggle:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+.header-spacer {
+    display: none;
+    width: 130px;
+    grid-row: 1 / -1;
+}
+
+/* ---- Primary nav ---- */
+.nav {
+    display: none;
+    text-align: center;
+    margin: .75rem auto 0 auto;
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: center;
+    width: 100%;
+}
+.nav.open {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.nav a {
+    color: var(--ink-000);
+    background: rgba(255, 255, 255, .20);
+    padding: .35rem 2rem;
+    border-radius: var(--radius);
+    letter-spacing: .01em;
+    border: 1px solid rgba(255, 255, 255, .30);
+    width: 100%;
+    text-align: center;
+}
+.nav a:hover,
+.nav a.active {
+    background: var(--canyon-sunrise);
+    text-decoration: none;
+}
+
+/* ---- Main Layout ---- */
+main {
+    width: min(1050px, 92%);
+    margin: 1.25rem auto 3rem;
+    flex: 1;
+}
+.page-title {
+    text-align: center;
+    color: var(--evergreen-ridge);
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Sections --- */
+section {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin: 0 0 1rem;
+    box-shadow: var(--shadow-1);
+}
+section > h2, p.h2 {
+    color: var(--evergreen-ridge);
+    padding: .6rem 0;
+    border-radius: 999px;
+    margin-bottom: .75rem;
+    font-size: 2rem; 
+    font-weight: 700;
+}
+section > h3, p.h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--evergreen-ridge);
+    margin-bottom: .5rem;
+}
+section > h4, p.h4 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--evergreen-ridge);
+    margin-bottom: .5rem;
+}
+section > h5, p.h5 {
+    margin-top: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--evergreen-ridge);
+    margin-bottom: .5rem;
+}
+#typography ul {
+    max-width: 600px;
+}
+p.h1, p.h2, p.h3, p.h4, p.h5 {
+    margin: 0 0 .5rem 1rem; 
+    text-align: left;
+    padding: 0;
+}
+p.body-elements {
+    margin: 0 0 .5rem 1rem; 
+    text-align: left;
+    padding: 0;
+}
+
+/* ---- Figures ---- */
+figure {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-1);
+    background: #fff;
+}
+figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+figcaption {
+    padding: .75rem 1rem;
+    background: var(--alpine-sky);
+    color: var(--evergreen-ridge);
+}
+figcaption h3 {
+    margin: 0 0 .25rem 0;
+}
+section ul li {
+    margin: .35rem 0;
+}
+
+/* ---- Color Schema ---- */
+.color-list {
+    list-style: none;
+    padding-left: 0;
+    margin: .25rem 0 0 0;
+}
+.color-list li {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin: .45rem 0;
+}
+.swatch {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: .3rem;
+    border: 1px solid rgba(0, 0, 0, .15);
+    background: var(--sw, #ccc);
+}
+
+/* ---- Wireframes ---- */
+.wf {
+    margin-block: 1rem 1.5rem;
+}
+.wf figcaption {
+    margin: 0 0 .5rem 0;
+    color: var(--evergreen-ridge);
+}
+.wf svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: .5rem;
+    background: #fff;
+    box-shadow: var(--shadow-2);
+}
+
+/* ---- Footer ---- */
+footer {
+    text-align: center;
+    color: var(--ink-000);
+    background: var(--evergreen-ridge);
+    padding: 1rem;
+    box-shadow: var(--shadow-1);
+}
+footer p {
+    margin: .2rem auto;
+    max-width: 100%;
+}
+
+/* ---- Hero Section ---- */
+.hero {
+    background: linear-gradient(135deg, var(--evergreen-ridge) 0%, var(--river-blue) 100%);
+    background-size: cover;
+    background-position: center;
+    color: var(--ink-000);
+    padding: 3rem 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    max-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-caption {
+    position: absolute;
+    bottom: .5rem;
+    right: 1rem;
+    color: #ffffff;
+    font-size: .85rem;
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+.hero-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+.hero-content p {
+    max-width: 100%;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ---- Filters ---- */
+.filters {
+    background: var(--river-blue);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1rem;
+    align-items: center;
+}
+.filters label {
+    font-weight: 600;
+    color: white;
+    margin-right: 0.2rem;
+}
+.filters select {
+    padding: .5rem;
+    border: 1px solid var(--evergreen-ridge);
+    border-radius: var(--radius);
+    font-family: inherit;
+}
+
+/* ---- Parks Section ---- */
+.featured-parks,
+.parks h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.featured-parks .park-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.cta-center {
+    text-align: center;
+    margin-top: 2rem;
+}
+.cta-btn {
+    display: inline-block;
+    background: var(--canyon-sunrise);
+    color: var(--ink-000) !important;
+    padding: .75rem 2rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: var(--shadow-1);
+}
+.cta-btn:hover {
+    background: var(--river-blue);
+    text-decoration: none;
+    color: var(--ink-000) !important;
+}
+
+/* ---- Itineraries Overview ---- */
+.itineraries-overview {
+    background: var(--alpine-sky);
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+    border-radius: var(--radius);
+}
+.itineraries-overview h2 {
+    text-align: center;
+    color: var(--evergreen-ridge);
+    margin: 0 auto .5rem auto;
+    max-width: 100%;
+}
+.itineraries-overview .intro {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+}
+.itineraries-overview .cta-btn {
+    color: var(--ink-000);
+}
+.itinerary-preview-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.itinerary-preview {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-1);
+}
+.itinerary-preview h3 {
+    color: var(--evergreen-ridge);
+    margin-bottom: .5rem;
+}
+.itinerary-preview ul {
+    margin-top: .75rem;
+}
+
+/* ---- Parks Section ---- */
+.parks h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.park-grid {
+    display: grid;
+    gap: 1rem;
+}
+.park-card {
+    background: var(--warm-sandstone);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-1);
+    display: flex;
+    flex-direction: column;
+}
+.park-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.park-card-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.park-card h3 {
+    color: var(--evergreen-ridge);
+    margin-bottom: .5rem;
+}
+.park-card .region {
+    color: var(--canyon-sunrise);
+    font-weight: 600;
+    font-size: .9rem;
+}
+.park-card .state {
+    color: var(--ink-700);
+    font-size: .9rem;
+    font-style: italic;
+    margin-bottom: .5rem;
+}
+.park-card .btn {
+    display: inline-block;
+    background: var(--canyon-sunrise);
+    color: var(--ink-000);
+    padding: .5rem 1rem;
+    border-radius: var(--radius);
+    margin-top: auto;
+    font-weight: 700;
+    text-align: center;
+}
+.park-card .btn:hover {
+    background: var(--river-blue);
+    text-decoration: none;
+}
+
+/* ---- Park Detail Page ---- */
+.park-header {
+    background: var(--evergreen-ridge);
+    color: var(--ink-000);
+    text-align: center;
+}
+.park-header h2 {
+    color: var(--ink-000);
+}
+.park-info, .trails, .tips {
+    margin-bottom: 1.5rem;
+}
+.trail-card {
+    background: var(--alpine-sky);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-bottom: .75rem;
+}
+.trail-card h4 {
+    color: var(--evergreen-ridge);
+    margin-bottom: .5rem;
+}
+
+/* ---- Itineraries ---- */
+.itinerary {
+    margin-bottom: 2rem;
+}
+.itinerary-cta {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #ddd;
+}
+.itinerary-hero {
+    margin: -1rem -1rem 1rem -1rem;
+    border-radius: var(--radius) var(--radius) 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 125px;
+}
+.itinerary-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+}
+.itinerary-hero img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.hero-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff !important;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    margin: 0;
+    text-align: center;
+    width: 90%;
+    border: none;
+    padding: 0;
+}
+.itinerary h3 {
+    color: var(--evergreen-ridge);
+}
+.itinerary h4 {
+    color: var(--evergreen-ridge);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-left: 4px solid var(--canyon-sunrise);
+    padding-left: .75rem;
+    margin-bottom: .25rem;
+}
+.itinerary h5 {
+    color: var(--evergreen-ridge);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: .75rem;
+}
+.day {
+    background: var(--alpine-sky);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin: 1rem 0;
+}
+.day1 {
+    background: #E8F2F8;
+}
+.day2 {
+    background: #D4E5F1;
+}
+.day3 {
+    background: var(--alpine-sky);
+}
+.day-upsell {
+    background: var(--canyon-sunrise);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.day-upsell h5 {
+    color: white;
+    margin-bottom: 1rem;
+}
+.day-upsell p {
+    line-height: 1.6;
+}
+
+/* ---- Tips Page ---- */
+.tips-grid {
+    display: grid;
+    gap: 1.5rem;
+    align-items: start;
+}
+.tips-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.tip-category {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 1rem;
+    box-shadow: var(--shadow-1);
+}
+.tip-category h3 {
+    color: var(--evergreen-ridge);
+    border-left: 4px solid var(--canyon-sunrise);
+    padding-left: .75rem;
+}
+.tips-form {
+    background: var(--alpine-sky);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-2);
+}
+.tips-form h3 {
+    color: var(--evergreen-ridge);
+    margin-bottom: .5rem;
+}
+.tips-form p {
+    margin-bottom: 1.5rem;
+    font-size: .95rem;
+}
+.tips-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.tips-form label {
+    font-weight: 600;
+    color: var(--evergreen-ridge);
+    margin-bottom: .25rem;
+}
+.tips-form input, .tips-form select, .tips-form textarea {
+    padding: .75rem;
+    border: 1px solid var(--evergreen-ridge);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 1rem;
+}
+.tips-form textarea {
+    resize: vertical;
+}
+.submit-btn {
+    background: var(--canyon-sunrise);
+    color: var(--ink-000);
+    padding: .75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: .5rem;
+}
+.submit-btn:hover {
+    background: var(--river-blue);
+}
+
+/* ---- Thank You Page ---- */
+.thankyou {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* ---- Plan Cards ---- */
+.plan-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-1);
+    margin-bottom: 1rem;
+}
+.plan-card h3 {
+    color: var(--evergreen-ridge);
+    margin-bottom: 0.5rem;
+}
+.plan-card p {
+    margin: 0.5rem 0;
+}
+
+/* ---- Place Items ---- */
+.place-item {
+    background: #fff;
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-1);
+    margin-bottom: 1rem;
+}
+.place-item h4 {
+    color: var(--evergreen-ridge);
+    margin-bottom: 0.5rem;
+}
+
+/* ---- Alert Items ---- */
+.alert-item {
+    background: var(--alpine-sky);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--radius);
+}
+.alert-item h4 {
+    color: var(--evergreen-ridge);
+    margin-bottom: 0.5rem;
+}
+.thankyou h2 {
+    color: var(--evergreen-ridge);
+    margin-bottom: 1rem;
+}
+.thankyou > p {
+    max-width: 100%;
+    margin: 0 auto 1rem auto;
+}
+.submission-details {
+    background: var(--alpine-sky);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin: 1.5rem auto;
+    max-width: 600px;
+    text-align: left;
+}
+.submission-details p {
+    margin: .5rem 0;
+}
+.stats-box {
+    background: var(--warm-sandstone);
+    border: 2px solid var(--canyon-sunrise);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin: 1.5rem auto;
+    max-width: 600px;
+}
+.stats-box h3 {
+    color: var(--evergreen-ridge);
+    margin-bottom: 1rem;
+}
+.stats-box p {
+    margin: .5rem 0;
+}
+.thankyou .btn {
+    display: inline-block;
+    background: var(--canyon-sunrise);
+    color: var(--ink-000);
+    padding: .75rem 1.5rem;
+    border-radius: var(--radius);
+    margin-top: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.thankyou .btn:hover {
+    background: var(--river-blue);
+    text-decoration: none;
+}
+
+/* ---- Modals ---- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.modal-content {
+    background-color: var(--ink-000);
+    margin: 10% auto;
+    padding: 0;
+    border-radius: var(--radius);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: var(--shadow-2);
+    overflow: hidden;
+    z-index: 1001;
+}
+.modal-header {
+    padding: 1.5rem 2rem;
+    text-align: center;
+    background: var(--evergreen-ridge);
+    color: var(--ink-000);
+    position: relative;
+}
+.modal-header-image {
+    padding: 0;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+.modal-header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.modal-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(11, 61, 46, 0.4), rgba(11, 61, 46, 0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+}
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink-000);
+}
+.close {
+    color: var(--ink-000);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+.close:hover {
+    opacity: 0.8;
+}
+.modal-body {
+    padding: 2rem;
+    background: var(--ink-000);
+    color: var(--ink-900);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+.modal-body h4 {
+    color: var(--evergreen-ridge);
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+.modal-body h4:first-child {
+    margin-top: 0;
+}
+.modal-body ul {
+    margin: 0 0 1rem 0;
+    padding-left: 1.25rem;
+}
+.modal-body li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+.modal-cta {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+}
