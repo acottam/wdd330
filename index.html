@@ -2,6 +2,9 @@
 <html lang="en-US">
 
 <head>
+  <!-- ========================================
+       META TAGS
+       ======================================== -->
   <meta charset="utf-8">
   <meta name="theme-color" content="#0B3D2E">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,29 +21,36 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PNW Family Adventure Finder">
 
-  <!-- Fonts -->
+  <!-- ========================================
+       FONTS
+       ======================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
+  <!-- ========================================
+       STYLESHEETS
+       ======================================== -->
   <link rel="stylesheet" href="styles/normalize.min.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/responsive.css">
-  
-  
-  
 
-  <!-- JS -->
+  <!-- ========================================
+       JAVASCRIPT
+       ======================================== -->
   <script type="module" src="scripts/app.js"></script>
 
-  <!-- Favicon -->
+  <!-- ========================================
+       FAVICON
+       ======================================== -->
   <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
   
-  <!-- Header -->
+  <!-- ========================================
+       HEADER
+       ======================================== -->
   <header>
     <div class="header-wrapper">
       
@@ -55,9 +65,8 @@
         </p>
       </div>
       
-      <!-- Menu Button -->
-      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-controls="primary-nav"
-        aria-expanded="false">
+      <!-- Menu Toggle Button -->
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <span class="bar" aria-hidden="true"></span>
         <span class="bar" aria-hidden="true"></span>
         <span class="bar" aria-hidden="true"></span>
@@ -66,7 +75,7 @@
       <!-- Header Spacer -->
       <div class="header-spacer"></div>
       
-      <!-- Primary Nav -->
+      <!-- Primary Navigation -->
       <nav id="primary-nav" class="nav closed" aria-label="Primary">
         <a href="index.html" class="active">Home</a>
         <a href="results.html">Search Results</a>
@@ -76,11 +85,13 @@
     </div>
   </header>
 
-  <!-- Main -->
+  <!-- ========================================
+       MAIN CONTENT
+       ======================================== -->
   <main>
     <h1 class="page-title">PNW Family Adventure Finder</h1>
     
-    <!-- Search Section -->
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
         <h2>Find Your Next Pacific Northwest Adventure</h2>
@@ -88,6 +99,7 @@
       </div>
     </section>
 
+    <!-- Search Form -->
     <section class="tips-form">
       <h3>Search for Parks</h3>
       <form id="search-form">
@@ -101,7 +113,7 @@
     <section id="parks" class="featured-parks">
       <h2>Featured Pacific Northwest Parks</h2>
       <div class="park-grid" id="featured-grid">
-        <!-- Featured parks will be loaded here -->
+        <!-- Featured parks loaded via JavaScript -->
       </div>
       <div class="cta-center">
         <a href="results.html" class="cta-btn">View All Parks</a>
@@ -109,10 +121,9 @@
     </section>
   </main>
 
-  <!-- Modal Container -->
-  <div id="modal-container"></div>
-
-  <!-- Footer -->
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
   <footer>
     <p><span id="currentyear"></span> <span>🏕️🏔️🌲</span> Adam Cottam <span>🌲🏔️🏕️</span> Portland, Oregon USA</p>
     <p id="lastmodified"></p>

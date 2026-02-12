@@ -1,12 +1,18 @@
-// Map Module - displays map with markers (placeholder for Mapbox/OSM integration)
+/* ========================================
+   MAP MODULE
+   Displays map with markers
+   Placeholder for Mapbox/OSM integration
+   ======================================== */
+
 export const MapModule = {
   
-  // Initialize map (placeholder - would use Mapbox or Leaflet.js)
+  // Initialize map
+  // TODO: Integrate with Mapbox or Leaflet.js
   initMap(latitude, longitude, parkName) {
     const mapContainer = document.getElementById('map-container');
     if (!mapContainer) return;
     
-    // Placeholder: In production, this would initialize a real map
+    // Placeholder - replace with real map implementation
     // Example with Leaflet.js:
     // const map = L.map('map-container').setView([latitude, longitude], 13);
     // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
@@ -24,7 +30,6 @@ export const MapModule = {
   
   // Add marker to map
   addMarker(latitude, longitude, label) {
-    // Placeholder for adding additional markers (nearby places)
     console.log(`Adding marker: ${label} at ${latitude}, ${longitude}`);
   }
 };

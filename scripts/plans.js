@@ -1,4 +1,8 @@
-// Day Plan Module - handles localStorage for day plans
+/* ========================================
+   DAY PLAN MODULE
+   Handles localStorage for day plans
+   ======================================== */
+
 export const DayPlanModule = {
   
   // Get plans from localStorage

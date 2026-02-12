@@ -1,12 +1,15 @@
-// Nearby Module - fetches nearby places (placeholder for Yelp API integration)
+/* ========================================
+   NEARBY MODULE
+   Fetches nearby places
+   Placeholder for Yelp API integration
+   ======================================== */
+
 export const NearbyModule = {
   
-  // Fetch nearby places (placeholder - would use Yelp API via Node.js proxy)
+  // Fetch nearby places
+  // TODO: Integrate with Yelp API via Node.js proxy
   async fetchNearbyPlaces(latitude, longitude) {
-    // Placeholder: In production, this would call your Node.js backend
-    // which proxies requests to Yelp Fusion API
-    
-    // Mock data for now
+    // Mock data - replace with Yelp API call via backend
     return [
       {
         id: '1',
@@ -36,7 +39,7 @@ export const NearbyModule = {
     }
     
     nearbyContent.innerHTML = places.map(place => `
-      <div class="place-item" style="background: #fff; padding: 1rem; margin-bottom: 1rem; border-radius: var(--radius); box-shadow: var(--shadow-1);">
+      <div class="place-item">
         <h4>${place.name}</h4>
         <p><strong>Category:</strong> ${place.category}</p>
         <p><strong>Rating:</strong> ${place.rating} ⭐</p>

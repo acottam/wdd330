@@ -1,4 +1,8 @@
-// Search Module - handles park search functionality
+/* ========================================
+   SEARCH MODULE
+   Handles park search functionality
+   ======================================== */
+
 export const SearchModule = {
   
   // Search parks by name or location
@@ -14,7 +18,7 @@ export const SearchModule = {
   },
   
   // Initialize search form
-  initSearchForm(parks, onSearchComplete) {
+  initSearchForm(parks) {
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
     

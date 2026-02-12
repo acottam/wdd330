@@ -2,6 +2,9 @@
 <html lang="en-US">
 
 <head>
+  <!-- ========================================
+       META TAGS
+       ======================================== -->
   <meta charset="utf-8">
   <meta name="theme-color" content="#0B3D2E">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,44 +20,61 @@
   <meta property="og:image" content="https://acottam.github.io/wdd330/images/pnw-family-adventure-finder-logo.png">
   <meta property="og:type" content="website">
 
-  <!-- Fonts -->
+  <!-- ========================================
+       FONTS
+       ======================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
+  <!-- ========================================
+       STYLESHEETS
+       ======================================== -->
   <link rel="stylesheet" href="styles/normalize.min.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/responsive.css">
-  
-  
-  
 
-  <!-- JS -->
+  <!-- ========================================
+       JAVASCRIPT
+       ======================================== -->
   <script type="module" src="scripts/app.js"></script>
 
-  <!-- Favicon -->
+  <!-- ========================================
+       FAVICON
+       ======================================== -->
   <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
   
-  <!-- Header -->
+  <!-- ========================================
+       HEADER
+       ======================================== -->
   <header>
     <div class="header-wrapper">
+      
+      <!-- Logo -->
       <img src="images/pnw-family-adventure-finder-logo.png" alt="PNW Family Adventure Finder Logo" class="logo">
+      
+      <!-- Site Name -->
       <div class="header-content">
         <p class="site-name">
           <span class="line-1">PNW Family</span>
           <span class="line-2">Adventure Finder</span>
         </p>
       </div>
+      
+      <!-- Menu Toggle Button -->
       <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <span class="bar" aria-hidden="true"></span>
         <span class="bar" aria-hidden="true"></span>
         <span class="bar" aria-hidden="true"></span>
       </button>
+      
+      <!-- Header Spacer -->
       <div class="header-spacer"></div>
+      
+      <!-- Primary Navigation -->
       <nav id="primary-nav" class="nav closed" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="results.html">Search Results</a>
@@ -64,37 +84,45 @@
     </div>
   </header>
 
-  <!-- Main -->
+  <!-- ========================================
+       MAIN CONTENT
+       ======================================== -->
   <main>
     <h1 class="page-title">Park Details</h1>
     
+    <!-- Park Information -->
     <section id="park-info" class="park-info">
-      <!-- Park details will be loaded here -->
+      <!-- Park details loaded via JavaScript -->
     </section>
 
+    <!-- Current Alerts -->
     <section id="alerts" class="alerts">
       <h2>Current Alerts</h2>
       <div id="alerts-content">
-        <!-- Alerts will be loaded here -->
+        <!-- Alerts loaded via JavaScript -->
       </div>
     </section>
 
+    <!-- Nearby Eats & Amenities -->
     <section id="nearby" class="nearby">
       <h2>Nearby Eats & Amenities</h2>
       <div id="nearby-content">
-        <!-- Nearby places will be loaded here -->
+        <!-- Nearby places loaded via JavaScript -->
       </div>
     </section>
 
+    <!-- Map View -->
     <section id="map" class="map">
       <h2>Map View</h2>
       <div id="map-container">
-        <!-- Map will be loaded here -->
+        <!-- Map loaded via JavaScript -->
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
   <footer>
     <p><span id="currentyear"></span> <span>🏕️🏔️🌲</span> Adam Cottam <span>🌲🏔️🏕️</span> Portland, Oregon USA</p>
     <p id="lastmodified"></p>

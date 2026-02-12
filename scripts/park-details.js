@@ -1,4 +1,8 @@
-// Park Details Module - displays park information
+/* ========================================
+   PARK DETAILS MODULE
+   Displays park information
+   ======================================== */
+
 export const ParkDetailsModule = {
   
   // Get park from URL parameter
@@ -26,7 +30,6 @@ export const ParkDetailsModule = {
   
   // Add current park to favorites
   addToFavorites() {
-    // This would integrate with FavoritesModule
     alert('Added to favorites!');
   },
   
@@ -40,8 +43,6 @@ export const ParkDetailsModule = {
     }
     
     this.displayParkDetails(park);
-    
-    // Update page title
     document.title = `${park.name} - PNW Family Adventure Finder`;
   }
 };

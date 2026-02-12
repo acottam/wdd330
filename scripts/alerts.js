@@ -1,12 +1,16 @@
-// Alerts Module - fetches and displays NPS alerts (placeholder for API integration)
+/* ========================================
+   ALERTS MODULE
+   Fetches and displays NPS alerts
+   Placeholder for API integration
+   ======================================== */
+
 export const AlertsModule = {
   
-  // Fetch alerts for a park (placeholder - would use NPS API)
+  // Fetch alerts for a park
+  // TODO: Integrate with NPS API
   async fetchAlerts(parkCode) {
-    // Placeholder: In production, this would call NPS API
+    // Mock data - replace with NPS API call
     // Example: https://developer.nps.gov/api/v1/alerts?parkCode=${parkCode}&api_key=${API_KEY}
-    
-    // Mock data for now
     return [
       {
         title: 'Trail Closure',
@@ -27,7 +31,7 @@ export const AlertsModule = {
     }
     
     alertsContent.innerHTML = alerts.map(alert => `
-      <div class="alert-item" style="background: var(--alpine-sky); padding: 1rem; margin-bottom: 1rem; border-radius: var(--radius);">
+      <div class="alert-item">
         <h4>${alert.title}</h4>
         <p><strong>Category:</strong> ${alert.category}</p>
         <p>${alert.description}</p>

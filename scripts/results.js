@@ -1,4 +1,8 @@
-// Results Module - handles park results display and filtering
+/* ========================================
+   RESULTS MODULE
+   Handles park results display and filtering
+   ======================================== */
+
 export const ResultsModule = {
   
   // Display park results
@@ -32,7 +36,7 @@ export const ResultsModule = {
       case 'name':
         return sorted.sort((a, b) => a.name.localeCompare(b.name));
       case 'distance':
-        // Placeholder - would need geolocation implementation
+        // Placeholder for geolocation implementation
         return sorted;
       default:
         return sorted;

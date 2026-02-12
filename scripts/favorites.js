@@ -1,4 +1,8 @@
-// Favorites Module - handles localStorage for favorites
+/* ========================================
+   FAVORITES MODULE
+   Handles localStorage for favorites
+   ======================================== */
+
 export const FavoritesModule = {
   
   // Get favorites from localStorage

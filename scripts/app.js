@@ -1,4 +1,8 @@
-// Main application controller
+/* ========================================
+   MAIN APPLICATION CONTROLLER
+   PNW Family Adventure Finder
+   ======================================== */
+
 import { SearchModule } from './search.js';
 import { ResultsModule } from './results.js';
 import { ParkDetailsModule } from './park-details.js';
@@ -11,7 +15,11 @@ import { DayPlanModule } from './plans.js';
 // Global parks data
 let parks = [];
 
-// Load parks data
+/* ========================================
+   DATA LOADING
+   ======================================== */
+
+// Load parks data from JSON
 async function loadParks() {
   try {
     const response = await fetch('data/parks-list.json');
@@ -22,14 +30,16 @@ async function loadParks() {
   }
 }
 
+/* ========================================
+   PAGE INITIALIZATION
+   ======================================== */
+
 // Initialize page based on current route
 function initializePage() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
-  // Initialize menu toggle
+  // Initialize common elements
   initMenuToggle();
-  
-  // Initialize footer
   updateFooter();
   
   // Page-specific initialization
@@ -54,12 +64,14 @@ function initializePage() {
   }
 }
 
+/* ========================================
+   HOME PAGE
+   ======================================== */
+
 // Initialize home page
 function initHomePage() {
-  // Setup search
   SearchModule.initSearchForm(parks);
   
-  // Display featured parks
   const featured = parks.filter(p => p.featured).slice(0, 4);
   displayFeaturedParks(featured);
 }
@@ -81,19 +93,21 @@ function displayFeaturedParks(parks) {
   `).join('');
 }
 
+/* ========================================
+   PARK DETAIL PAGE
+   ======================================== */
+
 // Initialize park detail page
 function initParkDetailPage() {
   ParkDetailsModule.initParkDetailsPage(parks);
-  
-  // Initialize alerts (mock data for now)
   AlertsModule.initAlerts('mock-park-code');
-  
-  // Initialize nearby places (mock data for now)
-  NearbyModule.initNearby(47.7511, -121.7369); // Example coordinates
-  
-  // Initialize map (mock for now)
+  NearbyModule.initNearby(47.7511, -121.7369);
   MapModule.initMap(47.7511, -121.7369, 'Park Name');
 }
+
+/* ========================================
+   UI COMPONENTS
+   ======================================== */
 
 // Initialize menu toggle
 function initMenuToggle() {
@@ -122,6 +136,10 @@ function updateFooter() {
     modifiedP.textContent = `Last Modified: ${document.lastModified}`;
   }
 }
+
+/* ========================================
+   APP INITIALIZATION
+   ======================================== */
 
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', loadParks);
