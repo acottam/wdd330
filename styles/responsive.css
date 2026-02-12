@@ -1,0 +1,112 @@
+/* ========================================
+   RESPONSIVE STYLES - TABLET & DESKTOP
+   ======================================== */
+
+@media (min-width: 48rem) {
+  
+  /* Header */
+  .menu-toggle {
+    display: none;
+  }
+  
+  .header-spacer {
+    display: block;
+    grid-column: 3;
+    width: 150px;
+  }
+  
+  .header-wrapper {
+    grid-template-columns: 150px 1fr 150px;
+  }
+  
+  .logo {
+    width: 150px;
+  }
+  
+  .site-name .line-1 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: .3rem;
+  }
+  
+  .site-name .line-2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  }
+  
+  /* Navigation */
+  .nav {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem 2rem;
+    margin-top: .5rem;
+    justify-content: center;
+    width: auto;
+  }
+  
+  .nav a {
+    width: auto;
+  }
+  
+  /* Layout */
+  main {
+    margin-top: 1.5rem;
+  }
+  
+  section {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  section > h2 {
+    font-size: 1.5rem;
+    padding: .7rem 0;
+  }
+  
+  /* Hero */
+  .hero-content h2 {
+    font-size: 1.75rem;
+  }
+  
+  /* Filters */
+  .filters {
+    justify-content: center;
+  }
+  
+  /* Parks Grid */
+  .park-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ========================================
+   RESPONSIVE STYLES - LARGE DESKTOP
+   ======================================== */
+
+@media (min-width: 70rem) {
+  
+  /* Layout */
+  main,
+  .header-wrapper {
+    width: min(1100px, 90%);
+  }
+  
+  /* Typography */
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+  
+  section > h2 {
+    font-size: 1.75rem;
+  }
+  
+  /* Parks Grid */
+  .park-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .featured-parks .park-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
