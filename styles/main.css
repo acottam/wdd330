@@ -176,7 +176,7 @@ header {
 .site-name .line-2 {
   font-size: clamp(.5668704rem, 1.2282192vw, .8030664rem);
   font-weight: 400;
-  margin: .5rem 0 0 0;
+  margin: 0;
 }
 
 .header-spacer {
