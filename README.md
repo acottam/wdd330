@@ -69,9 +69,6 @@ desktop):
 
   **Mobile + Desktop Wireframes**
 
-  ![](media/image2.svg){width="6.504508967629047in"
-  height="9.177083333333334in"}
-
 **External Data**
 
 - **National Park Service API:** park details and current alerts.
@@ -125,19 +122,8 @@ desktop):
 > **Typography:**
 
 - **Headings:** Raleway (600--700)\
-  ![A black and white text AI-generated content may be
-  incorrect.](media/image3.png){width="3.181198600174978in"
-  height="0.40269903762029746in"}\
-  ![](media/image4.png){width="2.9794717847769028in"
-  height="0.36829615048118985in"}
 
 - **Body:** Open Sans (400--600)\
-  ![A black and white sign with white text AI-generated content may be
-  incorrect.](media/image5.png){width="3.123753280839895in"
-  height="0.4521380139982502in"}\
-  ![A black background with white text AI-generated content may be
-  incorrect.](media/image6.png){width="3.2355522747156606in"
-  height="0.42980205599300086in"}
 
 > **Icon design:**
 >
