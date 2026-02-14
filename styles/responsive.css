@@ -6,6 +6,12 @@
 /* Tablet breakpoint: 48rem (768px) */
 @media (min-width: 48rem) {
   
+  /* Header - Remove bottom padding and allow nav to break out */
+  header {
+    padding-bottom: 0;
+    overflow: visible;
+  }
+  
   /* Header - Hide hamburger, show horizontal nav */
   .menu-toggle {
     display: none;
@@ -19,6 +25,28 @@
   
   .header-wrapper {
     grid-template-columns: 120px 1fr 120px;
+    overflow: visible;
+  }
+  
+  /* Navigation - Full width river blue bar */
+  .nav {
+    background: var(--river-blue);
+    padding: 0.25rem 0;
+    box-shadow: var(--shadow-1);
+    grid-column: 1 / -1;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 0.5rem;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center !important;
+    align-items: center;
+    gap: .5rem 1rem;
+    flex-wrap: wrap;
   }
   
   /* Logo - Increase size from mobile */
@@ -49,8 +77,7 @@
     flex-wrap: wrap;
     gap: .5rem 1rem;
     margin-top: .5rem;
-    justify-content: center;
-    width: auto;
+    justify-content: center !important;
   }
   
   .nav a {
@@ -60,7 +87,7 @@
   
   /* Layout - Increase spacing */
   main {
-    margin-top: 1.5rem;
+    margin-top: 1.25em;
   }
   
   section {
@@ -182,5 +209,99 @@
   /* Cards - Larger images */
   .park-card img {
     height: 250px;
+  }
+}
+
+
+/* ========================================
+   STATE LINKS - RESPONSIVE
+   ======================================== */
+
+/* Show state links on tablet and desktop */
+@media (min-width: 48rem) {
+  .state-links {
+    display: block;
+    position: fixed;
+    top: 230px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 40;
+  }
+}
+
+
+/* Add padding to main on results page for fixed state links */
+@media (min-width: 48rem) {
+  body:has(.state-links) main {
+    padding-top: 3rem;
+  }
+}
+
+
+/* Ensure map stays below fixed header */
+@media (min-width: 48rem) {
+  #results-map {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+
+/* Results page search and map layout */
+@media (min-width: 48rem) {
+  #results-search-map-container {
+    grid-template-columns: 1fr 2fr !important;
+  }
+}
+
+
+/* Nearby places grid - 3 columns on desktop */
+@media (min-width: 48rem) {
+  #nearby-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+
+/* Ensure park detail map stays below fixed header */
+#leaflet-map {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Park detail page layout - 2 columns on desktop */
+@media (min-width: 48rem) {
+  #park-detail-content {
+    grid-template-columns: 2fr 1fr !important;
+  }
+  
+  #park-detail-buttons {
+    align-items: flex-end !important;
+  }
+  
+  #park-detail-buttons .cta-btn {
+    width: auto !important;
+  }
+}
+
+
+/* Nearby places buttons - centered on mobile */
+.place-item {
+  text-align: center;
+}
+
+.place-item .btn {
+  width: 100%;
+}
+
+@media (min-width: 48rem) {
+  .place-item {
+    text-align: left;
+  }
+  
+  .place-item .btn {
+    width: auto;
   }
 }

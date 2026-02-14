@@ -1,35 +1,30 @@
 /* ========================================
    MAP MODULE
-   Displays map with markers
-   Placeholder for Mapbox/OSM integration
+   Displays interactive map with Leaflet.js
    ======================================== */
 
 export const MapModule = {
+  map: null,
   
-  // Initialize map
-  // TODO: Integrate with Mapbox or Leaflet.js
-  initMap(latitude, longitude, parkName) {
-    const mapContainer = document.getElementById('map-container');
-    if (!mapContainer) return;
+  initMap(lat, lng, parkName, address = '', distance = null) {
+    const container = document.getElementById('map-container');
+    if (!container) return;
     
-    // Placeholder - replace with real map implementation
-    // Example with Leaflet.js:
-    // const map = L.map('map-container').setView([latitude, longitude], 13);
-    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    // L.marker([latitude, longitude]).addTo(map).bindPopup(parkName);
+    const addressLink = address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}` : `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+    const distanceText = distance ? `<p><strong>Distance:</strong> ${distance.toLocaleString()} miles from your location</p>` : '';
     
-    mapContainer.innerHTML = `
-      <div style="background: var(--alpine-sky); padding: 2rem; text-align: center; border-radius: var(--radius);">
-        <p><strong>Map View</strong></p>
-        <p>${parkName}</p>
-        <p>Coordinates: ${latitude}, ${longitude}</p>
-        <p style="font-size: 0.9rem; color: var(--ink-700);">Map integration coming soon with Mapbox/OpenStreetMap</p>
-      </div>
+    container.innerHTML = `
+      <p><strong>Address:</strong> <a href="${addressLink}" target="_blank">Open in Maps</a></p>
+      ${distanceText}
+      <div id="leaflet-map" style="height: 400px; margin-top: 1rem;"></div>
     `;
-  },
-  
-  // Add marker to map
-  addMarker(latitude, longitude, label) {
-    console.log(`Adding marker: ${label} at ${latitude}, ${longitude}`);
+    
+    this.map = L.map('leaflet-map', { scrollWheelZoom: false }).setView([lat, lng], 10);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(this.map);
+    
+    L.marker([lat, lng]).addTo(this.map).bindPopup(`<b>${parkName}</b>`);
   }
 };

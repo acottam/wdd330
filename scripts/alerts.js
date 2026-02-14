@@ -1,23 +1,21 @@
 /* ========================================
    ALERTS MODULE
    Fetches and displays NPS alerts
-   Placeholder for API integration
    ======================================== */
+
+import { ApiService } from './api.js';
 
 export const AlertsModule = {
   
-  // Fetch alerts for a park
-  // TODO: Integrate with NPS API
+  // Fetch alerts for a park from NPS API
   async fetchAlerts(parkCode) {
-    // Mock data - replace with NPS API call
-    // Example: https://developer.nps.gov/api/v1/alerts?parkCode=${parkCode}&api_key=${API_KEY}
-    return [
-      {
-        title: 'Trail Closure',
-        description: 'Paradise Road is closed for winter season.',
-        category: 'Closure'
-      }
-    ];
+    try {
+      const data = await ApiService.getAlerts(parkCode);
+      return data.data || [];
+    } catch (error) {
+      console.error('Error fetching alerts:', error);
+      return [];
+    }
   },
   
   // Display alerts

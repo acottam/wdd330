@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Test - PNW Adventure Finder</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+    button { padding: 10px 20px; margin: 10px 5px; cursor: pointer; }
+    pre { background: #f4f4f4; padding: 15px; overflow-x: auto; }
+    .success { color: green; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>API Integration Test</h1>
+  
+  <div>
+    <button onclick="testNPSParks()">Test NPS Parks API</button>
+    <button onclick="testNPSAlerts()">Test NPS Alerts API</button>
+    <button onclick="testYelp()">Test Yelp API</button>
+    <button onclick="testGeocode()">Test Geocoding API</button>
+  </div>
+  
+  <div id="results"></div>
+
+  <script type="module">
+    import { ApiService } from './scripts/api.js';
+    
+    window.testNPSParks = async function() {
+      const results = document.getElementById('results');
+      results.innerHTML = '<p>Testing NPS Parks API...</p>';
+      try {
+        const data = await ApiService.searchParks('', 'WA');
+        results.innerHTML = `<p class="success">✓ Success! Found ${data.data.length} parks</p><pre>${JSON.stringify(data.data[0], null, 2)}</pre>`;
+      } catch (error) {
+        results.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+      }
+    };
+    
+    window.testNPSAlerts = async function() {
+      const results = document.getElementById('results');
+      results.innerHTML = '<p>Testing NPS Alerts API...</p>';
+      try {
+        const data = await ApiService.getAlerts('mora');
+        results.innerHTML = `<p class="success">✓ Success! Found ${data.data.length} alerts</p><pre>${JSON.stringify(data.data[0], null, 2)}</pre>`;
+      } catch (error) {
+        results.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+      }
+    };
+    
+    window.testYelp = async function() {
+      const results = document.getElementById('results');
+      results.innerHTML = '<p>Testing Yelp API...</p>';
+      try {
+        const data = await ApiService.getNearbyPlaces(47.6062, -122.3321);
+        results.innerHTML = `<p class="success">✓ Success! Found ${data.businesses.length} businesses</p><pre>${JSON.stringify(data.businesses[0], null, 2)}</pre>`;
+      } catch (error) {
+        results.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+      }
+    };
+    
+    window.testGeocode = async function() {
+      const results = document.getElementById('results');
+      results.innerHTML = '<p>Testing Geocoding API...</p>';
+      try {
+        const data = await ApiService.geocode('Seattle, WA');
+        results.innerHTML = `<p class="success">✓ Success! Geocoded location</p><pre>${JSON.stringify(data[0], null, 2)}</pre>`;
+      } catch (error) {
+        results.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+      }
+    };
+  </script>
+</body>
+</html>

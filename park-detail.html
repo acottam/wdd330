@@ -28,8 +28,11 @@
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/responsive.css">
   <link rel="stylesheet" href="styles/animations.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <!-- JavaScript -->
+  <script src="scripts/config.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script type="module" src="scripts/app.js"></script>
 
   <!-- Favicon -->
@@ -43,7 +46,9 @@
     <div class="header-wrapper">
       
       <!-- Logo -->
-      <img src="images/pnw-family-adventure-finder-logo.png" alt="PNW Family Adventure Finder Logo" class="logo">
+      <a href="index.html" aria-label="Go to home page">
+        <img src="images/pnw-family-adventure-finder-logo.png" alt="PNW Family Adventure Finder Logo" class="logo">
+      </a>
       
       <!-- Site Name -->
       <div class="header-content">
@@ -100,7 +105,7 @@
 
     <!-- Map View -->
     <section id="map" class="map" aria-label="Interactive map">
-      <h2>Map View</h2>
+      <h2>Map</h2>
       <div id="map-container" role="img" aria-label="Map showing park location and nearby places">
         <!-- Map loaded via JavaScript -->
       </div>

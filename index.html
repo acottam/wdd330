@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="styles/animations.css">
 
   <!-- JavaScript -->
+  <script src="scripts/config.js"></script>
   <script type="module" src="scripts/app.js"></script>
 
   <!-- Favicon -->
@@ -44,7 +45,9 @@
     <div class="header-wrapper">
       
       <!-- Logo -->
-      <img src="images/pnw-family-adventure-finder-logo.png" alt="PNW Family Adventure Finder Logo" class="logo">
+      <a href="index.html" aria-label="Go to home page">
+        <img src="images/pnw-family-adventure-finder-logo.png" alt="PNW Family Adventure Finder Logo" class="logo">
+      </a>
       
       <!-- Site Name -->
       <div class="header-content">
@@ -103,7 +106,7 @@
         <!-- Featured parks loaded via JavaScript -->
       </div>
       <div class="cta-center">
-        <a href="results.html" class="cta-btn">View All Parks</a>
+        <a href="#" id="view-all-parks" class="cta-btn">View All Parks</a>
       </div>
     </section>
   </main>

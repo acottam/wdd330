@@ -1,31 +1,28 @@
 /* ========================================
    NEARBY MODULE
-   Fetches nearby places
-   Placeholder for Yelp API integration
+   Fetches nearby places via Yelp API
    ======================================== */
+
+import { ApiService } from './api.js';
 
 export const NearbyModule = {
   
-  // Fetch nearby places
-  // TODO: Integrate with Yelp API via Node.js proxy
-  async fetchNearbyPlaces(latitude, longitude) {
-    // Mock data - replace with Yelp API call via backend
-    return [
-      {
-        id: '1',
-        name: 'Mountain View Cafe',
-        category: 'Coffee & Tea',
-        rating: 4.5,
-        distance: '2.3 miles'
-      },
-      {
-        id: '2',
-        name: 'Trail Head Restaurant',
-        category: 'American',
-        rating: 4.2,
-        distance: '3.1 miles'
-      }
-    ];
+  // Fetch nearby places from Yelp API
+  async fetchNearbyPlaces(latitude, longitude, limit = 10) {
+    try {
+      const data = await ApiService.getNearbyPlaces(latitude, longitude, 16093); // 10 miles in meters
+      return (data.businesses || []).slice(0, limit).map(b => ({
+        id: b.id,
+        name: b.name,
+        category: b.categories?.[0]?.title || 'Restaurant',
+        rating: b.rating,
+        distance: `${(b.distance / 1609.34).toFixed(1)} miles`,
+        image: b.image_url
+      }));
+    } catch (error) {
+      console.error('Error fetching nearby places:', error);
+      return [];
+    }
   },
   
   // Display nearby places
@@ -38,15 +35,16 @@ export const NearbyModule = {
       return;
     }
     
-    nearbyContent.innerHTML = places.map(place => `
+    nearbyContent.innerHTML = `<div id="nearby-grid" style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">${places.map(place => `
       <div class="place-item">
+        <img src="${place.image || 'images/np-logo.png'}" alt="${place.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius); margin-bottom: 0.5rem;">
         <h4>${place.name}</h4>
         <p><strong>Category:</strong> ${place.category}</p>
         <p><strong>Rating:</strong> ${place.rating} ⭐</p>
         <p><strong>Distance:</strong> ${place.distance}</p>
         <button onclick="NearbyModule.addToFavorites('${place.id}')" class="btn">Add to Favorites</button>
       </div>
-    `).join('');
+    `).join('')}</div>`;
   },
   
   // Add place to favorites

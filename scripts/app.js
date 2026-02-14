@@ -12,29 +12,8 @@ import { MapModule } from './map.js';
 import { FavoritesModule } from './favorites.js';
 import { DayPlanModule } from './plans.js';
 
-// Global parks data loaded from JSON
-let parks = [];
-
 /* ========================================
    DATA LOADING
-   ======================================== */
-
-/**
- * Load parks data from JSON file
- * Initializes the page after data is loaded
- */
-async function loadParks() {
-  try {
-    const response = await fetch('data/parks-list.json');
-    parks = await response.json();
-    initializePage();
-  } catch (error) {
-    console.error('Error loading parks:', error);
-  }
-}
-
-/* ========================================
-   PAGE INITIALIZATION
    ======================================== */
 
 /**
@@ -55,7 +34,7 @@ function initializePage() {
       initHomePage();
       break;
     case 'results.html':
-      ResultsModule.initResultsPage(parks);
+      ResultsModule.initResultsPage();
       break;
     case 'park-detail.html':
       initParkDetailPage();
@@ -64,8 +43,7 @@ function initializePage() {
       FavoritesModule.displayFavoritesPage();
       break;
     case 'plans.html':
-      DayPlanModule.initPlanForm(parks);
-      DayPlanModule.displayPlans();
+      initPlansPage();
       break;
   }
 }
@@ -77,17 +55,24 @@ function initializePage() {
 /**
  * Initialize home page with search and featured parks
  */
-function initHomePage() {
-  SearchModule.initSearchForm(parks);
+async function initHomePage() {
+  SearchModule.initSearchForm();
+  initViewAllParks();
   
-  // Display first 4 featured parks
-  const featured = parks.filter(p => p.featured).slice(0, 4);
-  displayFeaturedParks(featured);
+  // Load featured parks from NPS API (WA state)
+  try {
+    const { ApiService } = await import('./api.js');
+    const data = await ApiService.searchParks('', 'WA');
+    const featured = data.data.slice(0, 4);
+    displayFeaturedParks(featured);
+  } catch (error) {
+    console.error('Error loading featured parks:', error);
+  }
 }
 
 /**
  * Display featured parks on home page
- * @param {Array} parks - Array of featured park objects
+ * @param {Array} parks - Array of park objects from NPS API
  */
 function displayFeaturedParks(parks) {
   const grid = document.getElementById('featured-grid');
@@ -96,14 +81,60 @@ function displayFeaturedParks(parks) {
   // Generate HTML for each featured park card
   grid.innerHTML = parks.map(park => `
     <div class="park-card">
-      <img src="${park.image}" alt="${park.name}">
+      <img src="${park.images[0]?.url || 'images/np-logo.png'}" alt="${park.fullName}">
       <div class="park-card-content">
-        <h3>${park.name}</h3>
-        <p class="state">${park.state}</p>
-        <a href="park-detail.html?park=${encodeURIComponent(park.name)}" class="btn">View Details</a>
+        <h3>${park.fullName}</h3>
+        <p class="state">${park.states}</p>
+        <a href="park-detail.html?code=${park.parkCode}" class="btn">View Details</a>
       </div>
     </div>
   `).join('');
+}
+
+/**
+ * Initialize View All Parks button
+ */
+function initViewAllParks() {
+  const viewAllBtn = document.getElementById('view-all-parks');
+  if (!viewAllBtn) return;
+  
+  viewAllBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    
+    // Check if there's a previous search
+    const hasSearch = sessionStorage.getItem('searchResults');
+    if (hasSearch) {
+      window.location.href = 'results.html';
+      return;
+    }
+    
+    // Get user's state or default to Oregon
+    let stateName = 'Oregon';
+    
+    if (navigator.geolocation) {
+      try {
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+        
+        // Reverse geocode to get state
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`, {
+          headers: { 'User-Agent': 'PNW-Family-Adventure-Finder' }
+        });
+        const data = await response.json();
+        stateName = data.address?.state || 'Oregon';
+      } catch (error) {
+        console.log('Location not available, using Oregon as default');
+      }
+    }
+    
+    // Trigger search with state name
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.value = stateName;
+      document.getElementById('search-form').dispatchEvent(new Event('submit'));
+    }
+  });
 }
 
 /* ========================================
@@ -115,12 +146,23 @@ function displayFeaturedParks(parks) {
  * Loads park info, alerts, nearby places, and map
  */
 function initParkDetailPage() {
-  ParkDetailsModule.initParkDetailsPage(parks);
-  // TODO: Replace with actual park code from URL params
-  AlertsModule.initAlerts('mock-park-code');
-  // TODO: Replace with actual coordinates from selected park
-  NearbyModule.initNearby(47.7511, -121.7369);
-  MapModule.initMap(47.7511, -121.7369, 'Park Name');
+  ParkDetailsModule.initParkDetailsPage();
+}
+
+/**
+ * Initialize plans page with NPS API data
+ */
+async function initPlansPage() {
+  try {
+    const { ApiService } = await import('./api.js');
+    const data = await ApiService.searchParks('', null);
+    const parks = data.data.map(p => ({ name: p.fullName, parkCode: p.parkCode }));
+    DayPlanModule.initPlanForm(parks);
+    DayPlanModule.displayPlans();
+  } catch (error) {
+    console.error('Error loading parks for plans:', error);
+    DayPlanModule.displayPlans();
+  }
 }
 
 /* ========================================
@@ -166,4 +208,4 @@ function updateFooter() {
    ======================================== */
 
 // Initialize app when DOM is ready
-document.addEventListener('DOMContentLoaded', loadParks);
+document.addEventListener('DOMContentLoaded', initializePage);
