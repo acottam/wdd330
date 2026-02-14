@@ -2,9 +2,7 @@
 <html lang="en-US">
 
 <head>
-  <!-- ========================================
-       META TAGS
-       ======================================== -->
+  <!-- Meta Tags -->
   <meta charset="utf-8">
   <meta name="theme-color" content="#0B3D2E">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,36 +19,27 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PNW Family Adventure Finder">
 
-  <!-- ========================================
-       FONTS
-       ======================================== -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- ========================================
-       STYLESHEETS
-       ======================================== -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles/normalize.min.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/animations.css">
 
-  <!-- ========================================
-       JAVASCRIPT
-       ======================================== -->
+  <!-- JavaScript -->
   <script type="module" src="scripts/app.js"></script>
 
-  <!-- ========================================
-       FAVICON
-       ======================================== -->
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
   
-  <!-- ========================================
-       HEADER
-       ======================================== -->
+  <!-- Header -->
   <header>
     <div class="header-wrapper">
       
@@ -85,9 +74,7 @@
     </div>
   </header>
 
-  <!-- ========================================
-       MAIN CONTENT
-       ======================================== -->
+  <!-- Main Content -->
   <main>
     <h1 class="page-title">PNW Family Adventure Finder</h1>
     
@@ -102,10 +89,10 @@
     <!-- Search Form -->
     <section class="tips-form">
       <h3>Search for Parks</h3>
-      <form id="search-form">
+      <form id="search-form" role="search">
         <label for="search-input">Park Name or Location</label>
-        <input type="text" id="search-input" placeholder="e.g., Mount Rainier or Seattle, WA" aria-label="Search parks" required>
-        <button type="submit" class="submit-btn">Search Parks</button>
+        <input type="text" id="search-input" placeholder="e.g., Mount Rainier or Seattle, WA" aria-label="Search parks by name or location" required>
+        <button type="submit" class="submit-btn" aria-label="Submit search">Search Parks</button>
       </form>
     </section>
 
@@ -121,9 +108,7 @@
     </section>
   </main>
 
-  <!-- ========================================
-       FOOTER
-       ======================================== -->
+  <!-- Footer -->
   <footer>
     <p><span id="currentyear"></span> <span>🏕️🏔️🌲</span> Adam Cottam <span>🌲🏔️🏕️</span> Portland, Oregon USA</p>
     <p id="lastmodified"></p>

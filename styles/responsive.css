@@ -1,10 +1,12 @@
 /* ========================================
    RESPONSIVE STYLES - TABLET & DESKTOP
+   Mobile-first approach: Base styles are mobile
    ======================================== */
 
+/* Tablet breakpoint: 48rem (768px) */
 @media (min-width: 48rem) {
   
-  /* Header */
+  /* Header - Hide hamburger, show horizontal nav */
   .menu-toggle {
     display: none;
   }
@@ -12,15 +14,22 @@
   .header-spacer {
     display: block;
     grid-column: 3;
-    width: 150px;
+    width: 120px;
   }
   
   .header-wrapper {
-    grid-template-columns: 150px 1fr 150px;
+    grid-template-columns: 120px 1fr 120px;
   }
   
+  /* Logo - Increase size from mobile */
   .logo {
-    width: 150px;
+    width: 120px;
+    height: 120px;
+  }
+  
+  /* Site Title - Scale up typography */
+  .site-name {
+    min-height: 100px;
   }
   
   .site-name .line-1 {
@@ -32,13 +41,13 @@
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   }
   
-  /* Navigation */
+  /* Navigation - Horizontal layout */
   .nav {
     display: flex !important;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    gap: .5rem 2rem;
+    gap: .5rem 1rem;
     margin-top: .5rem;
     justify-content: center;
     width: auto;
@@ -46,26 +55,36 @@
   
   .nav a {
     width: auto;
+    padding: .5rem 1.5rem;
   }
   
-  /* Layout */
+  /* Layout - Increase spacing */
   main {
     margin-top: 1.5rem;
   }
   
   section {
-    padding: 1.25rem;
-    margin-bottom: 1.25rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Typography - Scale up */
+  .page-title {
+    font-size: 3rem;
   }
   
   section > h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     padding: .7rem 0;
   }
   
   /* Hero */
+  .hero {
+    max-height: 200px;
+  }
+  
   .hero-content h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
   
   /* Filters */
@@ -73,40 +92,95 @@
     justify-content: center;
   }
   
-  /* Parks Grid */
+  /* Grid Layouts - 2 columns */
   .park-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* Forms */
+  .tips-form {
+    padding: 2rem;
   }
 }
 
 
 /* ========================================
    RESPONSIVE STYLES - LARGE DESKTOP
+   Desktop breakpoint: 70rem (1120px)
    ======================================== */
 
 @media (min-width: 70rem) {
   
-  /* Layout */
+  /* Layout - Max width container */
   main,
   .header-wrapper {
     width: min(1100px, 90%);
   }
   
-  /* Typography */
+  .header-wrapper {
+    grid-template-columns: 150px 1fr 150px;
+  }
+  
+  .header-spacer {
+    width: 150px;
+  }
+  
+  /* Logo - Further increase */
+  .logo {
+    width: 150px;
+    height: 150px;
+  }
+  
+  /* Site Title - Larger typography */
+  .site-name .line-1 {
+    font-size: 2.8rem;
+    letter-spacing: .4rem;
+  }
+  
+  .site-name .line-2 {
+    font-size: 1.9rem;
+  }
+  
+  /* Navigation - More spacing */
+  .nav {
+    gap: .5rem 2rem;
+  }
+  
+  .nav a {
+    padding: .6rem 2rem;
+    font-size: 1.05rem;
+  }
+  
+  /* Typography - Scale up */
+  .page-title {
+    font-size: 3.5rem;
+  }
+  
   .hero-content h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
   
   section > h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
   
-  /* Parks Grid */
+  section {
+    padding: 2rem;
+  }
+  
+  /* Grid Layouts - 3-4 columns */
   .park-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
   
   .featured-parks .park-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Cards - Larger images */
+  .park-card img {
+    height: 250px;
   }
 }

@@ -1,0 +1,16 @@
+{
+  "name": "pnw-family-adventure-finder",
+  "version": "1.0.0",
+  "description": "A web application to help families plan outdoor day trips in the Pacific Northwest",
+  "main": "index.html",
+  "scripts": {
+    "lint": "eslint scripts/**/*.js",
+    "lint:fix": "eslint scripts/**/*.js --fix"
+  },
+  "keywords": ["parks", "pnw", "family", "adventure", "outdoor"],
+  "author": "Adam Cottam",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  }
+}

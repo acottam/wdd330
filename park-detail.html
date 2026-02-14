@@ -2,9 +2,7 @@
 <html lang="en-US">
 
 <head>
-  <!-- ========================================
-       META TAGS
-       ======================================== -->
+  <!-- Meta Tags -->
   <meta charset="utf-8">
   <meta name="theme-color" content="#0B3D2E">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,36 +18,27 @@
   <meta property="og:image" content="https://acottam.github.io/wdd330/images/pnw-family-adventure-finder-logo.png">
   <meta property="og:type" content="website">
 
-  <!-- ========================================
-       FONTS
-       ======================================== -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- ========================================
-       STYLESHEETS
-       ======================================== -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles/normalize.min.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/animations.css">
 
-  <!-- ========================================
-       JAVASCRIPT
-       ======================================== -->
+  <!-- JavaScript -->
   <script type="module" src="scripts/app.js"></script>
 
-  <!-- ========================================
-       FAVICON
-       ======================================== -->
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
   
-  <!-- ========================================
-       HEADER
-       ======================================== -->
+  <!-- Header -->
   <header>
     <div class="header-wrapper">
       
@@ -84,45 +73,41 @@
     </div>
   </header>
 
-  <!-- ========================================
-       MAIN CONTENT
-       ======================================== -->
+  <!-- Main Content -->
   <main>
     <h1 class="page-title">Park Details</h1>
     
     <!-- Park Information -->
-    <section id="park-info" class="park-info">
+    <section id="park-info" class="park-info" aria-label="Park information">
       <!-- Park details loaded via JavaScript -->
     </section>
 
     <!-- Current Alerts -->
-    <section id="alerts" class="alerts">
+    <section id="alerts" class="alerts" aria-label="Current park alerts">
       <h2>Current Alerts</h2>
-      <div id="alerts-content">
+      <div id="alerts-content" role="alert">
         <!-- Alerts loaded via JavaScript -->
       </div>
     </section>
 
     <!-- Nearby Eats & Amenities -->
-    <section id="nearby" class="nearby">
+    <section id="nearby" class="nearby" aria-label="Nearby restaurants and amenities">
       <h2>Nearby Eats & Amenities</h2>
-      <div id="nearby-content">
+      <div id="nearby-content" role="list">
         <!-- Nearby places loaded via JavaScript -->
       </div>
     </section>
 
     <!-- Map View -->
-    <section id="map" class="map">
+    <section id="map" class="map" aria-label="Interactive map">
       <h2>Map View</h2>
-      <div id="map-container">
+      <div id="map-container" role="img" aria-label="Map showing park location and nearby places">
         <!-- Map loaded via JavaScript -->
       </div>
     </section>
   </main>
 
-  <!-- ========================================
-       FOOTER
-       ======================================== -->
+  <!-- Footer -->
   <footer>
     <p><span id="currentyear"></span> <span>🏕️🏔️🌲</span> Adam Cottam <span>🌲🏔️🏕️</span> Portland, Oregon USA</p>
     <p id="lastmodified"></p>

@@ -5,20 +5,31 @@
 
 export const FavoritesModule = {
   
-  // Get favorites from localStorage
+  /**
+   * Get favorites from localStorage
+   * @returns {Object} Object containing parks and places arrays
+   */
   getFavorites() {
     const favorites = localStorage.getItem('pnw-favorites');
     return favorites ? JSON.parse(favorites) : { parks: [], places: [] };
   },
   
-  // Save favorites to localStorage
+  /**
+   * Save favorites to localStorage
+   * @param {Object} favorites - Object containing parks and places arrays
+   */
   saveFavorites(favorites) {
     localStorage.setItem('pnw-favorites', JSON.stringify(favorites));
   },
   
-  // Add park to favorites
+  /**
+   * Add park to favorites
+   * @param {Object} park - Park object to add
+   * @returns {boolean} True if added, false if already exists
+   */
   addParkToFavorites(park) {
     const favorites = this.getFavorites();
+    // Check if park already exists in favorites
     if (!favorites.parks.find(p => p.name === park.name)) {
       favorites.parks.push(park);
       this.saveFavorites(favorites);
@@ -27,16 +38,24 @@ export const FavoritesModule = {
     return false;
   },
   
-  // Remove park from favorites
+  /**
+   * Remove park from favorites
+   * @param {string} parkName - Name of park to remove
+   */
   removeParkFromFavorites(parkName) {
     const favorites = this.getFavorites();
     favorites.parks = favorites.parks.filter(p => p.name !== parkName);
     this.saveFavorites(favorites);
   },
   
-  // Add place to favorites
+  /**
+   * Add place to favorites
+   * @param {Object} place - Place object to add
+   * @returns {boolean} True if added, false if already exists
+   */
   addPlaceToFavorites(place) {
     const favorites = this.getFavorites();
+    // Check if place already exists in favorites
     if (!favorites.places.find(p => p.id === place.id)) {
       favorites.places.push(place);
       this.saveFavorites(favorites);
@@ -45,14 +64,19 @@ export const FavoritesModule = {
     return false;
   },
   
-  // Remove place from favorites
+  /**
+   * Remove place from favorites
+   * @param {string} placeId - ID of place to remove
+   */
   removePlaceFromFavorites(placeId) {
     const favorites = this.getFavorites();
     favorites.places = favorites.places.filter(p => p.id !== placeId);
     this.saveFavorites(favorites);
   },
   
-  // Display favorites page
+  /**
+   * Display favorites page with saved parks and places
+   */
   displayFavoritesPage() {
     const favorites = this.getFavorites();
     

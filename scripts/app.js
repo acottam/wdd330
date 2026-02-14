@@ -12,14 +12,17 @@ import { MapModule } from './map.js';
 import { FavoritesModule } from './favorites.js';
 import { DayPlanModule } from './plans.js';
 
-// Global parks data
+// Global parks data loaded from JSON
 let parks = [];
 
 /* ========================================
    DATA LOADING
    ======================================== */
 
-// Load parks data from JSON
+/**
+ * Load parks data from JSON file
+ * Initializes the page after data is loaded
+ */
 async function loadParks() {
   try {
     const response = await fetch('data/parks-list.json');
@@ -34,15 +37,18 @@ async function loadParks() {
    PAGE INITIALIZATION
    ======================================== */
 
-// Initialize page based on current route
+/**
+ * Initialize page based on current route
+ * Routes to appropriate page-specific initialization
+ */
 function initializePage() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
-  // Initialize common elements
+  // Initialize common elements on all pages
   initMenuToggle();
   updateFooter();
   
-  // Page-specific initialization
+  // Page-specific initialization based on current route
   switch(currentPage) {
     case 'index.html':
     case '':
@@ -68,19 +74,26 @@ function initializePage() {
    HOME PAGE
    ======================================== */
 
-// Initialize home page
+/**
+ * Initialize home page with search and featured parks
+ */
 function initHomePage() {
   SearchModule.initSearchForm(parks);
   
+  // Display first 4 featured parks
   const featured = parks.filter(p => p.featured).slice(0, 4);
   displayFeaturedParks(featured);
 }
 
-// Display featured parks on home page
+/**
+ * Display featured parks on home page
+ * @param {Array} parks - Array of featured park objects
+ */
 function displayFeaturedParks(parks) {
   const grid = document.getElementById('featured-grid');
   if (!grid) return;
   
+  // Generate HTML for each featured park card
   grid.innerHTML = parks.map(park => `
     <div class="park-card">
       <img src="${park.image}" alt="${park.name}">
@@ -97,10 +110,15 @@ function displayFeaturedParks(parks) {
    PARK DETAIL PAGE
    ======================================== */
 
-// Initialize park detail page
+/**
+ * Initialize park detail page with all modules
+ * Loads park info, alerts, nearby places, and map
+ */
 function initParkDetailPage() {
   ParkDetailsModule.initParkDetailsPage(parks);
+  // TODO: Replace with actual park code from URL params
   AlertsModule.initAlerts('mock-park-code');
+  // TODO: Replace with actual coordinates from selected park
   NearbyModule.initNearby(47.7511, -121.7369);
   MapModule.initMap(47.7511, -121.7369, 'Park Name');
 }
@@ -109,7 +127,10 @@ function initParkDetailPage() {
    UI COMPONENTS
    ======================================== */
 
-// Initialize menu toggle
+/**
+ * Initialize mobile menu toggle functionality
+ * Handles hamburger menu open/close with ARIA attributes
+ */
 function initMenuToggle() {
   const menuToggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('primary-nav');
@@ -119,11 +140,14 @@ function initMenuToggle() {
   menuToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
     menuToggle.classList.toggle('open');
+    // Update ARIA attribute for accessibility
     menuToggle.setAttribute('aria-expanded', isOpen);
   });
 }
 
-// Update footer with current year and last modified
+/**
+ * Update footer with current year and last modified date
+ */
 function updateFooter() {
   const yearSpan = document.getElementById('currentyear');
   const modifiedP = document.getElementById('lastmodified');

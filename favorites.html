@@ -2,9 +2,7 @@
 <html lang="en-US">
 
 <head>
-  <!-- ========================================
-       META TAGS
-       ======================================== -->
+  <!-- Meta Tags -->
   <meta charset="utf-8">
   <meta name="theme-color" content="#0B3D2E">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,36 +18,27 @@
   <meta property="og:image" content="https://acottam.github.io/wdd330/images/pnw-family-adventure-finder-logo.png">
   <meta property="og:type" content="website">
 
-  <!-- ========================================
-       FONTS
-       ======================================== -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- ========================================
-       STYLESHEETS
-       ======================================== -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles/normalize.min.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/animations.css">
 
-  <!-- ========================================
-       JAVASCRIPT
-       ======================================== -->
+  <!-- JavaScript -->
   <script type="module" src="scripts/app.js"></script>
 
-  <!-- ========================================
-       FAVICON
-       ======================================== -->
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
   
-  <!-- ========================================
-       HEADER
-       ======================================== -->
+  <!-- Header -->
   <header>
     <div class="header-wrapper">
       
@@ -84,32 +73,28 @@
     </div>
   </header>
 
-  <!-- ========================================
-       MAIN CONTENT
-       ======================================== -->
+  <!-- Main Content -->
   <main>
     <h1 class="page-title">My Favorites</h1>
     
     <!-- Favorite Parks -->
-    <section id="favorites-parks">
+    <section id="favorites-parks" aria-label="Favorite parks">
       <h2>Favorite Parks</h2>
-      <div id="favorites-parks-grid" class="park-grid">
+      <div id="favorites-parks-grid" class="park-grid" role="list">
         <!-- Favorite parks loaded via JavaScript -->
       </div>
     </section>
 
     <!-- Favorite Nearby Spots -->
-    <section id="favorites-places">
+    <section id="favorites-places" aria-label="Favorite nearby spots">
       <h2>Favorite Nearby Spots</h2>
-      <div id="favorites-places-list">
+      <div id="favorites-places-list" role="list">
         <!-- Favorite places loaded via JavaScript -->
       </div>
     </section>
   </main>
 
-  <!-- ========================================
-       FOOTER
-       ======================================== -->
+  <!-- Footer -->
   <footer>
     <p><span id="currentyear"></span> <span>🏕️🏔️🌲</span> Adam Cottam <span>🌲🏔️🏕️</span> Portland, Oregon USA</p>
     <p id="lastmodified"></p>

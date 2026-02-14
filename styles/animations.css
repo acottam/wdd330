@@ -1,0 +1,167 @@
+/* ========================================
+   CSS ANIMATIONS
+   PNW Family Adventure Finder
+   ======================================== */
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+/* Loading spinner animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide in from bottom */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse animation for alerts */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+
+.loading {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--canyon-sunrise);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+
+/* ========================================
+   CARD ANIMATIONS
+   ======================================== */
+
+.park-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.park-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.park-card:nth-child(1) { animation-delay: 0.1s; }
+.park-card:nth-child(2) { animation-delay: 0.2s; }
+.park-card:nth-child(3) { animation-delay: 0.3s; }
+.park-card:nth-child(4) { animation-delay: 0.4s; }
+
+
+/* ========================================
+   BUTTON ANIMATIONS
+   ======================================== */
+
+.btn, .cta-btn, .submit-btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover, .cta-btn:hover, .submit-btn:hover {
+  transform: scale(1.05);
+}
+
+.btn:active, .cta-btn:active, .submit-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* ========================================
+   NAVIGATION ANIMATIONS
+   ======================================== */
+
+.nav a {
+  transition: all 0.3s ease;
+}
+
+.nav.open {
+  animation: slideUp 0.3s ease-out;
+}
+
+
+/* ========================================
+   FORM INPUT ANIMATIONS
+   ======================================== */
+
+input, select, textarea {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--river-blue);
+  box-shadow: 0 0 0 3px rgba(29, 111, 163, 0.1);
+}
+
+
+/* ========================================
+   ALERT ANIMATIONS
+   ======================================== */
+
+.alert-item {
+  animation: slideUp 0.4s ease-out;
+}
+
+.alert-item.urgent {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+
+/* ========================================
+   PAGE TRANSITIONS
+   ======================================== */
+
+main {
+  animation: fadeIn 0.5s ease-in;
+}
+
+section {
+  animation: slideUp 0.5s ease-out;
+}
+
+
+/* ========================================
+   FAVORITE BUTTON ANIMATION
+   ======================================== */
+
+.favorite-btn {
+  transition: transform 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+}
+
+.favorite-btn.active {
+  animation: pulse 0.5s ease;
+}
